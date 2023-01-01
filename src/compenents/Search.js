@@ -98,7 +98,7 @@ function Search() {
     </div>
     {count==0 && <Home/>}
     {!error && spinner && <Spinner/>}
-    {!error && !spinner && count!=0 && <Weather temp={temp} latitude={latitude} precipitation={precipitation} color={color} isday={isday} longitude={longitude} feelslike={feelslike} humidity={humidity} wind={wind} direction={direction} moon_phase={moon_phase} pressure={pressure} icon={icon} uv={uv} visibility={visibility} condition={text} time={time} region={region} location={location} maxtemp={maxtemp} mintemp={mintemp}/>}
+    {!error && !spinner && count!=0 && <Weather temp={temp} latitude={latitude} precipitation={precipitation} isday={isday} longitude={longitude} feelslike={feelslike} humidity={humidity} wind={wind} direction={direction} moon_phase={moon_phase} pressure={pressure} icon={icon} uv={uv} visibility={visibility} condition={text} time={time} region={region} location={location} maxtemp={maxtemp} mintemp={mintemp}/>}
     {error && <Error/>} 
     </>
   )
