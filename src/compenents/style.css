@@ -1,0 +1,11 @@
+.bg-dark{
+    background-image: linear-gradient(to right, rgb(150, 146, 146), rgb(6, 6, 6))
+}
+.bg-secondary {
+    background-image: linear-gradient(to right, rgb(195, 242, 244), rgb(67, 233, 245))
+}
+.navbar{
+    background-image: linear-gradient(to right, rgb(196, 196, 250), rgb(192, 192, 246))
+}
+
+
