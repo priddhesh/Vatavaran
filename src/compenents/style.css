@@ -5,7 +5,9 @@
     background-image: linear-gradient(to right, rgb(195, 242, 244), rgb(67, 233, 245))
 }
 .navbar{
-    background-image: linear-gradient(to right, rgb(196, 196, 250), rgb(192, 192, 246))
+    background-image: linear-gradient(to right, rgb(196, 196, 250), rgb(143, 143, 228))
 }
-
+.spinner-border{
+    margin-top: 15%;
+}
 

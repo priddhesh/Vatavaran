@@ -1,105 +1,154 @@
-import React,{useState, useEffect} from 'react'
-import Spinner from './Spinner';
-import Weather from './Weather';
-import Home from './Home';
-import Error from './Error';
-import './style.css';
+import React, { useState, useEffect, useRef} from 'react'
+import Spinner from './Spinner'
+import Weather from './Weather'
+import Home from './Home'
+import Error from './Error'
+import Future from './Future'
+import './style.css'
 
-let API_KEY = "5373b44134da46fab1e133156222012"
-
+let API_KEY = "5373b44134da46fab1e133156222012";
 function Search() {
-  const [spinner, setspinner] = useState(false)
-  const [city, setcity] = useState("")
-  const [temp, settemp] = useState()
-  const [humidity, sethumidity] = useState()
-  const [wind, setwind] = useState()
-  const [pressure, setpressure] = useState()
-  const [icon, seticon] = useState("")
-  const [uv, setuv] = useState()
-  const [visibility, setvisibility] = useState()
-  const [text, settext] = useState()
-  const [feelslike, setfeelslike] = useState();
-  const [location, setlocation] = useState("");
-  const [region, setregion] = useState("")
-  const [mintemp, setmintemp] = useState()
-  const [maxtemp, setmaxtemp] = useState()
-  const [time, settime] = useState()
-  const [moon_phase, setmoon_phase] = useState("")
-  const [direction, setdirection] = useState("")
-  const [latitude, setlatitude] = useState()
-  const [longitude, setlongitude] = useState();
-  const [precipitation, setprecipitation] = useState()
-  const [status, setstatus] = useState(false)
-  const [count, setcount] = useState(0)
-  const [error, seterror] = useState(false)
-  const [color, setcolor] = useState({
-    bg:"",
-    tc:""
-  })
-  const [isday, setisday] = useState(false)
-  function value(e)
-  {
-      setcity(e.target.value);
+  const textInput = useRef(null);
+  const detailInfo = [];
+  const timeF = [];
+  const humidityf = [];
+  const dewpointf= [];
+  const windf = [];
+  const pressuref=[];
+  const winddir=[];
+  const iconfuture = [];
+  useEffect(() => {
+    textInput.current.focus();
+  }, []);
+
+  const [information, setInformation] = useState({
+    temperature: null,
+    humidity: null,
+    wind: null,
+    pressure: null,
+    icon: "",
+    uv: "",
+    visibility: null,
+    feelslike: null,
+    region: "",
+    time: "",
+    moon_phase: "",
+    location: "",
+    mintemp: null,
+    maxtemp: null,
+    direction: "",
+    latitude: null,
+    longitude: null,
+    precipitation: null,
+    status: false,
+    isday: false,
+    city: "",
+    weather: [],
+    timef: [],
+    humidityf: [],
+    dewpoint: [],
+    windspeed:[],
+    pressure_in:[],
+    windd:[],
+    iconf : []
+  });
+  const [spinner, setSpinner] = useState(false);
+  const [status, setStatus] = useState(false);
+  const [count, setCount] = useState(0);
+  const [error, setError] = useState(false);
+  const [a, seta] = useState(true)
+  function value(e) {
+    setInformation({
+      ...information,
+      city: e.target.value
+    });
   }
 
-  useEffect(() => {
-      document.getElementById("button-addon2").addEventListener('click', search)
-    return () => {
-      document.removeEventListener('click',search)
-    }
-  },[status])
+  function render() {
+    seta(!a);
+  }
   
-  function search()
-  {
-    setstatus((val)=> !val);
-    if(city!="")
-    {
-    setcount((cnt)=> cnt+1);
-    setspinner(true);
-    fetch(`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${city}&aq=yes`)
-      .then((response)=> response.json())
-      .then((data)=>{
+  useEffect(() => {
+    document.getElementById("button-addon2").addEventListener('click', search);
+    return () => {
+      document.removeEventListener('click', search);
+    }
+    //eslint-disable-next-line
+  }, [status])
+  
+  function search() {
+    seta(!a);
+    setStatus((val) => !val);
+    if (information.city !== "") {
+      setCount((cnt) => cnt + 1);
+      setSpinner(true);
+      fetch(`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${information.city}&aq=yes`)
+        .then((response) => response.json())
+        .then((data) => {
           console.log(data);
-          seterror(false);
-          settemp(data.current.temp_c);
-          setisday(data.current.is_day);
-          sethumidity(data.current.humidity);
-          setwind(data.current.wind_mph);
-          setdirection(data.current.wind_dir);
-          setpressure(data.current.pressure_in);
-          seticon(data.current.condition.icon);
-          setvisibility(data.current.vis_miles);
-          settext(data.current.condition.text);
-          setuv(data.current.uv);
-          setlocation(data.location.name);
-          setregion(data.location.region);
-          setmintemp(data.forecast.forecastday[0].day.mintemp_c);
-          setmaxtemp(data.forecast.forecastday[0].day.maxtemp_c);
-          setmoon_phase(data.forecast.forecastday[0].astro.moon_phase);
-          setlatitude(data.location.lat);
-          setlongitude(data.location.lon);
-          setfeelslike(data.current.feelslike_c);
-          settime(data.location.localtime);
-          setprecipitation(data.current.precip_mm);
-          setisday(data.current.is_day);
-          setspinner(false);
-          
-      }).catch((err)=>{
-        seterror(true);
-        console.log(err);
-      })
+          for (let i = 0; i < 24; ++i) {
+            timeF.push(data.forecast.forecastday[0].hour[i].time);
+            humidityf.push(data.forecast.forecastday[0].hour[i].humidity);
+            detailInfo.push(data.forecast.forecastday[0].hour[i].temp_c);
+            dewpointf.push(data.forecast.forecastday[0].hour[i].dewpoint_c);
+            windf.push(data.forecast.forecastday[0].hour[i].wind_mph);
+            pressuref.push(data.forecast.forecastday[0].hour[i].pressure_in);
+            winddir.push(data.forecast.forecastday[0].hour[i].wind_dir);
+            iconfuture.push(data.forecast.forecastday[0].hour[i].condition.icon);
+          }
+          setInformation({
+            temp: `${data.current.temp_c}`,
+            humidity: `${data.current.humidity}`,
+            isday: `${data.current.is_day}`,
+            wind: `${data.current.wind_mph}`,
+            direction: `${data.current.wind_dir}`,
+            pressure: `${data.current.pressure_in}`,
+            icon: `${data.current.condition.icon}`,
+            visibility: `${data.current.vis_miles}`,
+            text: `${data.current.condition.text}`,
+            uv: `${data.current.uv}`,
+            location: `${data.location.name}`,
+            region: `${data.location.region}`,
+            mintemp: `${data.forecast.forecastday[0].day.mintemp_c}`,
+            maxtemp: `${data.forecast.forecastday[0].day.maxtemp_c}`,
+            moon_phase: `${data.forecast.forecastday[0].astro.moon_phase}`,
+            latitude: `${data.location.lat}`,
+            longitude: `${data.location.lon}`,
+            feelslike: `${data.current.feelslike_c}`,
+            time: `${data.location.localtime}`,
+            precipitation: `${data.current.precip_mm}`,
+            weather : detailInfo,
+            timef : timeF,
+            humidityf : humidityf,
+            dewpoint : dewpointf,
+            windspeed : windf,
+            pressure_in : pressuref,
+            windd : winddir,
+            iconf: iconfuture
+          })
+          setSpinner(false);
+          setError(false);
+          console.log(detailInfo);
+        }).catch((error) => {
+          setError(true);
+          console.log(error);
+        })
     }
   }
+
   return (
     <>
-    <div className="input-group mb-2">
-        <input onChange={value} type="text" className="form-control" aria-label="Recipient's username" aria-describedby="button-addon2"/>
+      <div className="input-group mb-2 w-50 mx-auto">
+        <input ref={textInput} onChange={value} type="text" className="form-control" placeholder='Enter city/region name' aria-label="Recipient's username" aria-describedby="button-addon2" />
         <button onClick={search} id="button-addon2" className="btn btn-primary" type="submit">Search</button>
-    </div>
-    {count==0 && <Home/>}
-    {!error && spinner && <Spinner/>}
-    {!error && !spinner && count!=0 && <Weather temp={temp} latitude={latitude} precipitation={precipitation} isday={isday} longitude={longitude} feelslike={feelslike} humidity={humidity} wind={wind} direction={direction} moon_phase={moon_phase} pressure={pressure} icon={icon} uv={uv} visibility={visibility} condition={text} time={time} region={region} location={location} maxtemp={maxtemp} mintemp={mintemp}/>}
-    {error && <Error/>} 
+        {a && !spinner && count!==0 && !error && <button onClick={render} id="button-addon2" className="btn btn-success mx-2" type="submit">Get more details</button>}
+        {!a && !spinner && count!==0 && !error && <button onClick={render} id="button-addon2" className="btn btn-success mx-2" type="submit">Main Page</button>}
+      </div>
+      {count === 0 && <Home />}
+      {!error && spinner && <Spinner />}
+      {a && !error && !spinner && count !== 0 && <Weather temp={information.temp} latitude={information.latitude} precipitation={information.precipitation} isday={information.isday} longitude={information.longitude} feelslike={information.feelslike} humidity={information.humidity} wind={information.wind} direction={information.direction} moon_phase={information.moon_phase} pressure={information.pressure} icon={information.icon} uv={information.uv} visibility={information.visibility} condition={information.text} time={information.time} region={information.region} location={information.location} maxtemp={information.maxtemp} mintemp={information.mintemp} />}
+      {error && <Error />}
+      {!a && < Future weather={information.weather} icon={information.iconf} windd={information.windd} wind={information.windspeed} pressure={information.pressure_in} dewpoint={information.dewpoint} humidity={information.humidityf} time={information.timef}/>}
     </>
   )
 }

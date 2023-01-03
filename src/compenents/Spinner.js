@@ -1,9 +1,12 @@
 import React from 'react'
+import './style.css'
 
 export default function Spinner() {
   return (
-      <div className='text-center'>
-        <img src={require("./images/Spinner-1s-200px.jpg")} alt="" />
+    <div className="d-flex justify-content-center">
+      <div className="spinner-border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div>
     </div>
   )
 }

@@ -1,6 +1,6 @@
-import './App.css';
-import Search from './compenents/Search';
-import Navbar from './compenents/Navbar';
+import './App.css'
+import Search from './compenents/Search'
+import Navbar from './compenents/Navbar'
 
 function App() {
   return (
