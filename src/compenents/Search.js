@@ -17,6 +17,8 @@ function Search() {
   const pressuref=[];
   const winddir=[];
   const iconfuture = [];
+  const effectRan = useRef(false);
+
   useEffect(() => {
     textInput.current.focus();
   }, []);
@@ -69,9 +71,13 @@ function Search() {
   }
   
   useEffect(() => {
-    document.getElementById("button-addon2").addEventListener('click', search);
+    if(effectRan.current=== false)
+   {
+     document.getElementById("button-addon2").addEventListener('click', search);
+   }
     return () => {
       document.removeEventListener('click', search);
+      effectRan.current = true;
     }
     //eslint-disable-next-line
   }, [status])
@@ -80,6 +86,7 @@ function Search() {
     seta(!a);
     setStatus((val) => !val);
     if (information.city !== undefined && information.city !== "") {
+      console.log(information.city);
       setCount((cnt) => cnt + 1);
       setSpinner(true);
       fetch(`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${information.city}&aq=yes`)
