@@ -79,7 +79,7 @@ function Search() {
   function search() {
     seta(!a);
     setStatus((val) => !val);
-    if (information.city !== "") {
+    if (information.city !== undefined && information.city !== "") {
       setCount((cnt) => cnt + 1);
       setSpinner(true);
       fetch(`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${information.city}&aq=yes`)
