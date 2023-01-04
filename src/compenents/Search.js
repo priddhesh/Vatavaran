@@ -186,7 +186,7 @@ function Search() {
       {!error && spinner && <Spinner />}
       {a && !error && !spinner && count !== 0 && <Weather temp={information.temp} latitude={information.latitude} precipitation={information.precipitation} isday={information.isday} longitude={information.longitude} feelslike={information.feelslike} humidity={information.humidity} wind={information.wind} direction={information.direction} moon_phase={information.moon_phase} pressure={information.pressure} icon={information.icon} uv={information.uv} visibility={information.visibility} condition={information.text} time={information.time} region={information.region} location={information.location} maxtemp={information.maxtemp} mintemp={information.mintemp} />}
       {error && <Error />}
-      {!a && < Future weather={information.weather} icon={information.iconf} windd={information.windd} wind={information.windspeed} pressure={information.pressure_in} dewpoint={information.dewpoint} humidity={information.humidityf} time={information.timef}/>}
+      {!a && < Future weather={information.weather} mode={mode} icon={information.iconf} windd={information.windd} wind={information.windspeed} pressure={information.pressure_in} dewpoint={information.dewpoint} humidity={information.humidityf} time={information.timef}/>}
     </>
   )
 }
