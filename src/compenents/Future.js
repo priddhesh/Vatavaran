@@ -7,7 +7,7 @@ function Future(props) {
                 <div className="row row-cols-6 p-2">
                     <div className="col ">
                         <div className="card" style={{ width: "10rem" }}>
-                            <div className="card-body bg-secondary">
+                            <div className={`card-body bg-${props.mode}`}>
                                 <h5 className="card-text">12:00 AM</h5>
                                 <img className='h-10 mx-auto' src={props.icon[0]} alt="icon" />
                                 <h6 className="card-title">Temp.:{props.weather[0]}°</h6>
@@ -20,7 +20,7 @@ function Future(props) {
                     </div>
                     <div className="col">
                         <div className="card" style={{ width: "10rem" }}>
-                            <div className="card-body bg-secondary">
+                            <div className={`card-body bg-${props.mode}`}>
                                 <h5 className="card-text">1:00 AM</h5>
                                 <img className='h-10 mx-auto' src={props.icon[1]} alt="icon" />
                                 <h6 className="card-title">Temp.:{props.weather[1]}°</h6>
@@ -33,7 +33,7 @@ function Future(props) {
                     </div>
                     <div className="col">
                         <div className="card" style={{ width: "10rem" }}>
-                            <div className="card-body bg-secondary">
+                            <div className={`card-body bg-${props.mode}`}>
                                 <h5 className="card-text">2:00 AM</h5>
                                 <img className='h-10 mx-auto' src={props.icon[2]} alt="icon" />
                                 <h6 className="card-title">Temp.:{props.weather[2]}°</h6>
@@ -46,7 +46,7 @@ function Future(props) {
                     </div>
                     <div className="col">
                         <div className="card" style={{ width: "10rem" }}>
-                            <div className="card-body bg-secondary">
+                            <div className={`card-body bg-${props.mode}`}>
                                 <h5 className="card-text">3:00 AM</h5>
                                 <img className='h-10 mx-auto' src={props.icon[3]} alt="icon" />
                                 <h6 className="card-title">Temp.:{props.weather[3]}°</h6>
@@ -59,7 +59,7 @@ function Future(props) {
                     </div>
                     <div className="col">
                         <div className="card" style={{ width: "10rem" }}>
-                            <div className="card-body bg-secondary">
+                            <div className={`card-body bg-${props.mode}`}>
                                 <h5 className="card-text">4:00 AM</h5>
                                 <img className='h-10 mx-auto' src={props.icon[4]} alt="icon" />
                                 <h6 className="card-title">Temp.:{props.weather[4]}°</h6>
@@ -72,7 +72,7 @@ function Future(props) {
                     </div>
                     <div className="col">
                         <div className="card" style={{ width: "10rem" }}>
-                            <div className="card-body bg-secondary">
+                            <div className={`card-body bg-${props.mode}`}>
                                 <h5 className="card-text">5:00 AM</h5>
                                 <img className='h-10 mx-auto' src={props.icon[5]} alt="icon" />
                                 <h6 className="card-title">Temp.:{props.weather[5]}°</h6>
@@ -86,7 +86,7 @@ function Future(props) {
                 </div>
                 <div className="row row-cols-6 p-2">
                     <div className="col"><div className="card" style={{ width: "10rem" }}>
-                        <div className="card-body bg-secondary">
+                        <div className={`card-body bg-${props.mode}`}>
                             <h5 className="card-text">6:00 AM</h5>
                             <img className='h-10 mx-auto' src={props.icon[6]} alt="icon" />
                             <h6 className="card-title">Temp.:{props.weather[6]}°</h6>
@@ -99,7 +99,7 @@ function Future(props) {
                     </div>
                     <div className="col">
                         <div className="card" style={{ width: "10rem" }}>
-                            <div className="card-body bg-secondary">
+                            <div className={`card-body bg-${props.mode}`}>
                                 <h5 className="card-text">7:00 AM</h5>
                                 <img className='h-10 mx-auto' src={props.icon[7]} alt="icon" />
                                 <h6 className="card-title">Temp.:{props.weather[7]}°</h6>
@@ -112,7 +112,7 @@ function Future(props) {
                     </div>
                     <div className="col">
                         <div className="card" style={{ width: "10rem" }}>
-                            <div className="card-body bg-secondary">
+                            <div className={`card-body bg-${props.mode}`}>
                                 <h5 className="card-text">8:00 AM</h5>
                                 <img className='h-10 mx-auto' src={props.icon[8]} alt="icon" />
                                 <h6 className="card-title">Temp.:{props.weather[8]}°</h6>
@@ -125,7 +125,7 @@ function Future(props) {
                     </div>
                     <div className="col">
                         <div className="card" style={{ width: "10rem" }}>
-                            <div className="card-body bg-secondary">
+                            <div className={`card-body bg-${props.mode}`}>
                                 <h5 className="card-text">9:00 AM</h5>
                                 <img className='h-10 mx-auto' src={props.icon[9]} alt="icon" />
                                 <h6 className="card-title">Temp.:{props.weather[9]}°</h6>
@@ -138,7 +138,7 @@ function Future(props) {
                     </div>
                     <div className="col">
                         <div className="card" style={{ width: "10rem" }}>
-                            <div className="card-body bg-secondary">
+                            <div className={`card-body bg-${props.mode}`}>
                                 <h5 className="card-text">10:00 AM</h5>
                                 <img className='h-10 mx-auto' src={props.icon[10]} alt="icon" />
                                 <h6 className="card-title">Temp.:{props.weather[10]}°</h6>
@@ -151,7 +151,7 @@ function Future(props) {
                     </div>
                     <div className="col">
                         <div className="card" style={{ width: "10rem" }}>
-                            <div className="card-body bg-secondary">
+                            <div className={`card-body bg-${props.mode}`}>
                                 <h5 className="card-text">11:00 AM</h5>
                                 <img className='h-10 mx-auto' src={props.icon[11]} alt="icon" />
                                 <h6 className="card-title">Temp.:{props.weather[11]}°</h6>
@@ -165,7 +165,7 @@ function Future(props) {
                 </div>
                 <div className="row row-cols-6 p-2">
                     <div className="col"><div className="card" style={{ width: "10rem" }}>
-                        <div className="card-body bg-secondary">
+                        <div className={`card-body bg-${props.mode}`}>
                             <h5 className="card-text">12:00 PM</h5>
                             <img className='h-10 mx-auto' src={props.icon[12]} alt="icon" />
                             <h6 className="card-title">Temp.:{props.weather[12]}°</h6>
@@ -177,7 +177,7 @@ function Future(props) {
                     </div>
                     </div>
                     <div className="col"><div className="card" style={{ width: "10rem" }}>
-                        <div className="card-body bg-secondary">
+                        <div className={`card-body bg-${props.mode}`}>
                             <h5 className="card-text">1:00 PM</h5>
                             <img className='h-10 mx-auto' src={props.icon[13]} alt="icon" />
                             <h6 className="card-title">Temp.:{props.weather[13]}°</h6>
@@ -189,7 +189,7 @@ function Future(props) {
                     </div>
                     </div>
                     <div className="col"><div className="card" style={{ width: "10rem" }}>
-                        <div className="card-body bg-secondary">
+                        <div className={`card-body bg-${props.mode}`}>
                             <h5 className="card-text">2:00 PM</h5>
                             <img className='h-10 mx-auto' src={props.icon[14]} alt="icon" />
                             <h6 className="card-title">Temp.:{props.weather[14]}°</h6>
@@ -201,7 +201,7 @@ function Future(props) {
                     </div>
                     </div>
                     <div className="col"><div className="card" style={{ width: "10rem" }}>
-                        <div className="card-body bg-secondary">
+                        <div className={`card-body bg-${props.mode}`}>
                             <h5 className="card-text">3:00 PM</h5>
                             <img className='h-10 mx-auto' src={props.icon[15]} alt="icon" />
                             <h6 className="card-title">Temp.:{props.weather[15]}°</h6>
@@ -213,7 +213,7 @@ function Future(props) {
                     </div>
                     </div>
                     <div className="col"><div className="card" style={{ width: "10rem" }}>
-                        <div className="card-body bg-secondary">
+                        <div className={`card-body bg-${props.mode}`}>
                             <h5 className="card-text">4:00 PM</h5>
                             <img className='h-10 mx-auto' src={props.icon[16]} alt="icon" />
                             <h6 className="card-title">Temp.:{props.weather[16]}°</h6>
@@ -225,7 +225,7 @@ function Future(props) {
                     </div>
                     </div>
                     <div className="col"><div className="card" style={{ width: "10rem" }}>
-                        <div className="card-body bg-secondary">
+                        <div className={`card-body bg-${props.mode}`}>
                             <h5 className="card-text">5:00 PM</h5>
                             <img className='h-10 mx-auto' src={props.icon[17]} alt="icon" />
                             <h6 className="card-title">Temp.:{props.weather[17]}°</h6>
@@ -240,7 +240,7 @@ function Future(props) {
                 </div>
                 <div className="row row-cols-6 p-2">
                     <div className="col"><div className="card" style={{ width: "10rem" }}>
-                        <div className="card-body bg-secondary">
+                        <div className={`card-body bg-${props.mode}`}>
                             <h5 className="card-text">6:00 PM</h5>
                             <img className='h-10 mx-auto' src={props.icon[18]} alt="icon" />
                             <h6 className="card-title">Temp.:{props.weather[18]}°</h6>
@@ -252,7 +252,7 @@ function Future(props) {
                     </div>
                     </div>
                     <div className="col"><div className="card" style={{ width: "10rem" }}>
-                        <div className="card-body bg-secondary">
+                        <div className={`card-body bg-${props.mode}`}>
                             <h5 className="card-text">7:00 PM</h5>
                             <img className='h-10 mx-auto' src={props.icon[19]} alt="icon" />
                             <h6 className="card-title">Temp.:{props.weather[19]}°</h6>
@@ -264,7 +264,7 @@ function Future(props) {
                     </div>
                     </div>
                     <div className="col"><div className="card" style={{ width: "10rem" }}>
-                        <div className="card-body bg-secondary">
+                        <div className={`card-body bg-${props.mode}`}>
                             <h5 className="card-text">8:00 PM</h5>
                             <img className='h-10 mx-auto' src={props.icon[20]} alt="icon" />
                             <h6 className="card-title">Temp.:{props.weather[20]}°</h6>
@@ -276,7 +276,7 @@ function Future(props) {
                     </div>
                     </div>
                     <div className="col"><div className="card" style={{ width: "10rem" }}>
-                        <div className="card-body bg-secondary">
+                        <div className={`card-body bg-${props.mode}`}>
                             <h5 className="card-text">9:00 PM</h5>
                             <img className='h-10 mx-auto' src={props.icon[21]} alt="icon" />
                             <h6 className="card-title">Temp.:{props.weather[21]}°</h6>
@@ -288,7 +288,7 @@ function Future(props) {
                     </div>
                     </div>
                     <div className="col"><div className="card" style={{ width: "10rem" }}>
-                        <div className="card-body bg-secondary">
+                        <div className={`card-body bg-${props.mode}`}>
                             <h5 className="card-text">10:00 PM</h5>
                             <img className='h-10 mx-auto' src={props.icon[22]} alt="icon" />
                             <h6 className="card-title">Temp.:{props.weather[22]}°</h6>
@@ -300,7 +300,7 @@ function Future(props) {
                     </div>
                     </div>
                     <div className="col"><div className="card" style={{ width: "10rem" }}>
-                        <div className="card-body bg-secondary">
+                        <div className={`card-body bg-${props.mode}`}>
                             <h5 className="card-text">11:00 PM</h5>
                             <img className='h-10 mx-auto' src={props.icon[23]} alt="icon" />
                             <h6 className="card-title">Temp.:{props.weather[23]}°</h6>
