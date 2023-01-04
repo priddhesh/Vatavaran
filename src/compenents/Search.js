@@ -58,14 +58,27 @@ function Search() {
   const [status, setStatus] = useState(false);
   const [count, setCount] = useState(0);
   const [error, setError] = useState(false);
-  const [a, seta] = useState(true)
+  const [a, seta] = useState(true);
+  const [mode, setmode] = useState("secondary");
+  const [dn, setdn] = useState("Night");
+  const [bg, setbg] = useState("secondary");
+  const [textdn, settextdn] = useState("dark");
   function value(e) {
     setInformation({
       ...information,
       city: e.target.value
     });
   }
-
+  
+  useEffect(() => {
+    if(!spinner)
+    {
+    document.body.classList.add(`bg-${bg}`);
+    }
+    return () => {
+      document.body.classList.remove(`bg-${bg}`);
+    };
+  });
   function render() {
     seta(!a);
   }
@@ -142,7 +155,21 @@ function Search() {
         })
     }
   }
-
+  function changeMode()
+  {
+    if(mode==="secondary")
+    {
+      setmode("dark text-white");
+      setbg("dark");
+      setdn("Day");
+      settextdn("white");
+    }else{
+      setmode("secondary");
+      setbg("secondary");
+      setdn("Night");
+      settextdn("dark");
+    }
+  }
   return (
     <>
       <div className="input-group mb-2 w-50 mx-auto">
@@ -150,6 +177,10 @@ function Search() {
         <button onClick={search} id="button-addon2" className="btn btn-primary" type="submit">Search</button>
         {a && !spinner && count!==0 && !error && <button onClick={render} id="button-addon2" className="btn btn-success mx-2" type="submit">Get more details</button>}
         {!a && !spinner && count!==0 && !error && <button onClick={render} id="button-addon2" className="btn btn-success mx-2" type="submit">Main Page</button>}
+        {count !== 0 && !a && <div class="form-check form-switch mx-5">
+          <input onClick={changeMode} class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" />
+          <label class={`form-check-label text-${textdn}`} for="flexSwitchCheckChecked">{dn} Mode</label>
+        </div>}
       </div>
       {count === 0 && <Home />}
       {!error && spinner && <Spinner />}
