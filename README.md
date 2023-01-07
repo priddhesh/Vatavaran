@@ -55,3 +55,6 @@ Build app for production
 | :-------- | :------- | :------------------------- |
 | `q` | `int` | **Required**. Zipcode |
 | `days`| `int` | **Required**  No. of days|
+## 🔗 Links
+[![Weather API](https://img.shields.io/badge/weather_api-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://www.weatherapi.com/)
+
