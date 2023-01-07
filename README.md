@@ -1,12 +1,8 @@
 # Vatavaran Weather App
-
 This is a weather website which accurately provides detailed weather conditions of a particular place.
 
-
 ## Run Locally
-
 Clone the project
-
 ```bash
   git clone https://github.com/priddhesh/Vatavaran.git
 ```
