@@ -64,5 +64,6 @@ https://drive.google.com/file/d/1u9-XboqJAEH38-SzJqo1GWZNbxBOkqmT/view?usp=shari
 
 ## Screenshots
 
-![App Screenshot]([https://drive.google.com/file/d/1GXYdFysQoKv9GE6KeZ_SDqmm1pE5WVDo/view?usp=sharing](https://drive.google.com/file/d/1GXYdFysQoKv9GE6KeZ_SDqmm1pE5WVDo/view?usp=sharing))
+![07 01 2023_22 01 09_REC](https://user-images.githubusercontent.com/109747774/211161709-b5631f99-e058-43f3-9732-be9469c14905.png)
+
 
