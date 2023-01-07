@@ -31,5 +31,27 @@ Build app for production
   npm run build
 ```
 
+## API Reference
+#### Base URL
+```http
+   GET http://api.weatherapi.com/v1
+```
+#### Get current weather for location
 
+```http
+  GET  http://api.weatherapi.com/v1/current.json?key=<YOUR_API_KEY>&q=<location>
+```
 
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `key` | `string` | **Required**. Your API key |
+| `q`| `string` | **Required**  Location name|
+
+#### Get 7 day weather for US Zipcode 07112
+```http
+  GET  http://api.weatherapi.com/v1/forecast.json?key=<YOUR_API_KEY>&q=07112&days=7
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `q` | `int` | **Required**. Zipcode |
+| `days`| `int` | **Required**  No. of days|
