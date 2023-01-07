@@ -6,6 +6,7 @@ function Navbar() {
         <>
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
                 <div className="container-fluid">
+                    <img style={{width:"45px", paddingRight: "10px"}} src={require("./images/icons8-weather-64.png")} alt="" />
                     <a className="navbar-brand" href="/" style={{ fontFamily: "'Andika', sans-serif"}}>Vatavaran</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
