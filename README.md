@@ -62,3 +62,7 @@ Build app for production
 
 https://drive.google.com/file/d/1u9-XboqJAEH38-SzJqo1GWZNbxBOkqmT/view?usp=sharing
 
+## Screenshots
+
+![App Screenshot](https://drive.google.com/file/d/1GXYdFysQoKv9GE6KeZ_SDqmm1pE5WVDo/view?usp=sharing)
+
