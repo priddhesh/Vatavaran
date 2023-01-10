@@ -179,7 +179,7 @@ function Search() {
         {!a && !spinner && count!==0 && !error && <button onClick={render} id="button-addon2" className="btn btn-success mx-2" type="submit">Main Page</button>}
         {count !== 0 && !a && <div className="form-check form-switch mx-5">
           <input onClick={changeMode} className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" />
-          <label className={`form-check-label text-${textdn}`} for="flexSwitchCheckChecked">{dn} Mode</label>
+          <label className={`form-check-label text-${textdn}`} htmlFor="flexSwitchCheckChecked">{dn} Mode</label>
         </div>}
       </div>
       {count === 0 && <Home />}
