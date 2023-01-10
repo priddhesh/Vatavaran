@@ -177,9 +177,9 @@ function Search() {
         <button onClick={search} id="button-addon2" className="btn btn-primary" type="submit">Search</button>
         {a && !spinner && count!==0 && !error && <button onClick={render} id="button-addon2" className="btn btn-success mx-2" type="submit">Get more details</button>}
         {!a && !spinner && count!==0 && !error && <button onClick={render} id="button-addon2" className="btn btn-success mx-2" type="submit">Main Page</button>}
-        {count !== 0 && !a && <div class="form-check form-switch mx-5">
-          <input onClick={changeMode} class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" />
-          <label class={`form-check-label text-${textdn}`} for="flexSwitchCheckChecked">{dn} Mode</label>
+        {count !== 0 && !a && <div className="form-check form-switch mx-5">
+          <input onClick={changeMode} className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" />
+          <label className={`form-check-label text-${textdn}`} for="flexSwitchCheckChecked">{dn} Mode</label>
         </div>}
       </div>
       {count === 0 && <Home />}
