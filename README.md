@@ -79,7 +79,7 @@ https://drive.google.com/file/d/1u9-XboqJAEH38-SzJqo1GWZNbxBOkqmT/view?usp=shari
 
 ![07 01 2023_22 27 40_REC](https://user-images.githubusercontent.com/109747774/211161865-dd459a2d-4936-4429-ae41-820101982d11.png)
 
-![Screenshot (19)](https://user-images.githubusercontent.com/109747774/213260061-c55d9cc0-2f91-49f1-8403-731b4283f612.png)
+![Screenshot (25)](https://user-images.githubusercontent.com/109747774/213261463-88992717-ee63-42f7-95dc-5053c2380f31.png)
 
 ![07 01 2023_22 26 37_REC](https://user-images.githubusercontent.com/109747774/211161896-dd16de9d-f7a7-4db4-b97c-9b73ad4d2a99.png)
 
