@@ -30,6 +30,10 @@ Build app for production
 ```bash
   npm run build
 ```
+## Features
+
+- Accurate real time weather information consisting of temperature,humidity,visibility,pressure,uv index,wind,location,moon phase and precipitation details of particular region.
+- Light/dark mode toggle
 
 ## API Reference
 #### Base URL
