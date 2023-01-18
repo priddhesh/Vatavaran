@@ -33,7 +33,8 @@ Build app for production
 ## Features
 
 - Accurate real time weather information consisting of temperature,humidity,visibility,pressure,uv index,wind,location,moon phase and precipitation details of particular region.
-- Light/dark mode toggle
+- Provides weather conditions of every hour of current day.
+- Light/dark mode toggle.
 
 ## API Reference
 #### Base URL
@@ -78,4 +79,7 @@ https://drive.google.com/file/d/1u9-XboqJAEH38-SzJqo1GWZNbxBOkqmT/view?usp=shari
 
 ![07 01 2023_22 26 52_REC](https://user-images.githubusercontent.com/109747774/211161958-cbaee270-cd4d-4ef8-92a5-e7195e1d58bc.png)
 
+## Support
+
+For support, email patilriddhesh.cse123@gmail.com.
 
