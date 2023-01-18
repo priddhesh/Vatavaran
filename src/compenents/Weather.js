@@ -1,9 +1,25 @@
-import React from 'react'
+import React,{useState} from 'react'
+import Graph from './Graph'
 import './style.css'
 
 function Weather(props) {
+    const [val, setVal] = useState(-1);
+    const [mode, setMode] = useState("Night");
+    const [bg, setBg] = useState("#c2f9fc");
+    function changeMode()
+    {
+        if(mode === "Night")
+        {
+            setMode("Day");
+            setBg("#787a7d");
+        }else{
+            setMode("Night");
+            setBg("#c2f9fc");
+        }
+    }
     return (
-        <div className={`d-flex flex-row mb-6 bg-${props.isday === "1" ? "secondary" : "dark"}  text-${props.isday === "1" ? "dark" : "white"} text-emphasis-info1`}>
+        <>
+        <div className={`d-flex flex-row mb-6 bg-${props.isday==="1" ? "secondary" : "dark"}  text-${props.isday==="1" ? "dark" : "white"} text-emphasis-info1`}>
             <div className='container p-1 mb-2 '>
                 <div className="d-flex justify-content-around">
                     <h2>{props.location}{`${props.region}` !== `${props.location}` ? `, ${props.region}` : ``}</h2>
@@ -21,7 +37,7 @@ function Weather(props) {
                     </div>
                 </div>
             </div>
-            <div className={`container text-center text-${props.isday === "1" ? "dark" : "white"}`}>
+            <div className={`container text-center text-${props.isday==="1" ? "dark" : "white"}`}>
                 <div className="row">
                     <div className="col card bg-light p-1 bg-opacity-10" style={{ width: "0.5rem", height: "5%" }}>
                         <h6 className="card-title text-center"><b>Humidity</b></h6>
@@ -93,8 +109,22 @@ function Weather(props) {
                 </div>
             </div>
         </div>
+            <div className='py-2 d-flex justify-content-between'>
+                <div >
+                    <button type="button" onClick={() => { setVal(1); document.getElementById("Temperature").setAttribute("disabled", true); document.getElementById("Pressure").removeAttribute("disabled", true); document.getElementById("Humidity").removeAttribute("disabled", true) }} id="Temperature"  className="btn btn-primary mx-3">Temperature</button>
+                    <button type="button" onClick={() => { setVal(2); document.getElementById("Pressure").setAttribute("disabled", true); document.getElementById("Temperature").removeAttribute("disabled", true); document.getElementById("Humidity").removeAttribute("disabled", true) }} id="Pressure" className="btn btn-primary mx-3">Pressure</button>
+                    <button type="button" onClick={() => { setVal(3); document.getElementById("Humidity").setAttribute("disabled", true); document.getElementById("Pressure").removeAttribute("disabled", true); document.getElementById("Temperature").removeAttribute("disabled", true) }} id="Humidity" className="btn btn-primary mx-3">Humidity</button>
+                </div>
+                <div className="form-check form-switch mx-3">
+                <input onClick={changeMode}  className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" />
+                <label className={`form-check-label text-dark`} htmlFor="flexSwitchCheckChecked">{mode} Mode</label>
+                </div>
+        </div>
+        <Graph temp={props.gweather} bg={bg} pressure = {props.fpressure} humidity={props.fhumidity} val ={val}/>
+        </>
     )
 }
 
 export default Weather
+
 
