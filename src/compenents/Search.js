@@ -10,6 +10,8 @@ let API_KEY = "5373b44134da46fab1e133156222012";
 function Search() {
   const textInput = useRef(null);
   const detailInfo = [];
+  const fpressure =[];
+  const fhumidity =[];
   const timeF = [];
   const humidityf = [];
   const dewpointf= [];
@@ -18,7 +20,6 @@ function Search() {
   const winddir=[];
   const iconfuture = [];
   const effectRan = useRef(false);
-
   useEffect(() => {
     textInput.current.focus();
   }, []);
@@ -52,7 +53,10 @@ function Search() {
     windspeed:[],
     pressure_in:[],
     windd:[],
-    iconf : []
+    iconf : [],
+    einfo : [],
+    ftpressure : [],
+    fthumidity : []
   });
   const [spinner, setSpinner] = useState(false);
   const [status, setStatus] = useState(false);
@@ -69,32 +73,32 @@ function Search() {
       city: e.target.value
     });
   }
-  
   useEffect(() => {
-    if(!spinner)
-    {
-    document.body.classList.add(`bg-${bg}`);
+    if (!spinner) {
+      document.body.classList.add(`bg-${bg}`);
     }
     return () => {
       document.body.classList.remove(`bg-${bg}`);
     };
   });
+
+
   function render() {
-    seta(!a);
+    seta(!a); 
   }
-  
+
   useEffect(() => {
-    if(effectRan.current=== false)
+   if(effectRan.current=== false)
    {
-     document.getElementById("button-addon2").addEventListener('click', search);
+    document.getElementById("button-addon2").addEventListener('click', search);
    }
     return () => {
-      document.removeEventListener('click', search);
-      effectRan.current = true;
+    document.removeEventListener('click', search);
+    effectRan.current = true;
     }
     //eslint-disable-next-line
   }, [status])
-  
+
   function search() {
     seta(!a);
     setStatus((val) => !val);
@@ -102,19 +106,33 @@ function Search() {
       console.log(information.city);
       setCount((cnt) => cnt + 1);
       setSpinner(true);
-      fetch(`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${information.city}&aq=yes`)
+      fetch(`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${information.city}&aq=yes&days=5`)
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
+          setError(false);
           for (let i = 0; i < 24; ++i) {
             timeF.push(data.forecast.forecastday[0].hour[i].time);
             humidityf.push(data.forecast.forecastday[0].hour[i].humidity);
             detailInfo.push(data.forecast.forecastday[0].hour[i].temp_c);
+            fpressure.push((data.forecast.forecastday[0].hour[i].pressure_in));
+            fhumidity.push((data.forecast.forecastday[0].hour[i].humidity));
             dewpointf.push(data.forecast.forecastday[0].hour[i].dewpoint_c);
             windf.push(data.forecast.forecastday[0].hour[i].wind_mph);
             pressuref.push(data.forecast.forecastday[0].hour[i].pressure_in);
             winddir.push(data.forecast.forecastday[0].hour[i].wind_dir);
             iconfuture.push(data.forecast.forecastday[0].hour[i].condition.icon);
+          }
+          for(let i = 0;i<24;++i)
+          {
+            detailInfo.push(data.forecast.forecastday[1].hour[i].temp_c);
+            fpressure.push(data.forecast.forecastday[1].hour[i].pressure_in);
+            fhumidity.push((data.forecast.forecastday[1].hour[i].humidity));
+          }
+          for (let i = 0; i < 24; ++i) {
+            detailInfo.push(data.forecast.forecastday[2].hour[i].temp_c);
+            fpressure.push(data.forecast.forecastday[2].hour[i].pressure_in);
+            fhumidity.push((data.forecast.forecastday[2].hour[i].humidity));
           }
           setInformation({
             temp: `${data.current.temp_c}`,
@@ -144,14 +162,13 @@ function Search() {
             windspeed : windf,
             pressure_in : pressuref,
             windd : winddir,
-            iconf: iconfuture
+            iconf: iconfuture,
+            ftpressure : fpressure,
+            fthumidity : fhumidity
           })
           setSpinner(false);
-          setError(false);
-          console.log(detailInfo);
         }).catch((error) => {
           setError(true);
-          console.log(error);
         })
     }
   }
@@ -170,6 +187,7 @@ function Search() {
       settextdn("dark");
     }
   }
+
   return (
     <>
       <div className="input-group mb-2 w-50 mx-auto">
@@ -184,7 +202,7 @@ function Search() {
       </div>
       {count === 0 && <Home />}
       {!error && spinner && <Spinner />}
-      {a && !error && !spinner && count !== 0 && <Weather temp={information.temp} latitude={information.latitude} precipitation={information.precipitation} isday={information.isday} longitude={information.longitude} feelslike={information.feelslike} humidity={information.humidity} wind={information.wind} direction={information.direction} moon_phase={information.moon_phase} pressure={information.pressure} icon={information.icon} uv={information.uv} visibility={information.visibility} condition={information.text} time={information.time} region={information.region} location={information.location} maxtemp={information.maxtemp} mintemp={information.mintemp} />}
+      {a && !error && !spinner && count !== 0 && <Weather temp={information.temp} fhumidity = {information.fthumidity} fpressure = {information.ftpressure} gweather={information.weather} latitude={information.latitude} precipitation={information.precipitation} isday={information.isday} longitude={information.longitude} feelslike={information.feelslike} humidity={information.humidity} wind={information.wind} direction={information.direction} moon_phase={information.moon_phase} pressure={information.pressure} icon={information.icon} uv={information.uv} visibility={information.visibility} condition={information.text} time={information.time} region={information.region} location={information.location} maxtemp={information.maxtemp} mintemp={information.mintemp} />}
       {error && <Error />}
       {!a && < Future weather={information.weather} mode={mode} icon={information.iconf} windd={information.windd} wind={information.windspeed} pressure={information.pressure_in} dewpoint={information.dewpoint} humidity={information.humidityf} time={information.timef}/>}
     </>
@@ -192,3 +210,5 @@ function Search() {
 }
 
 export default Search
+
+
