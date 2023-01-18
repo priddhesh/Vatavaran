@@ -3,7 +3,7 @@ import './style.css'
 
 function Weather(props) {
     return (
-        <div className={`d-flex flex-row mb-6 bg-${props.isday==="1" ? "secondary" : "dark"}  text-${props.isday==="1" ? "dark" : "white"} text-emphasis-info1`}>
+        <div className={`d-flex flex-row mb-6 bg-${props.isday === "1" ? "secondary" : "dark"}  text-${props.isday === "1" ? "dark" : "white"} text-emphasis-info1`}>
             <div className='container p-1 mb-2 '>
                 <div className="d-flex justify-content-around">
                     <h2>{props.location}{`${props.region}` !== `${props.location}` ? `, ${props.region}` : ``}</h2>
@@ -21,7 +21,7 @@ function Weather(props) {
                     </div>
                 </div>
             </div>
-            <div className={`container text-center text-${props.isday==="1" ? "dark" : "white"}`}>
+            <div className={`container text-center text-${props.isday === "1" ? "dark" : "white"}`}>
                 <div className="row">
                     <div className="col card bg-light p-1 bg-opacity-10" style={{ width: "0.5rem", height: "5%" }}>
                         <h6 className="card-title text-center"><b>Humidity</b></h6>
@@ -97,3 +97,4 @@ function Weather(props) {
 }
 
 export default Weather
+
